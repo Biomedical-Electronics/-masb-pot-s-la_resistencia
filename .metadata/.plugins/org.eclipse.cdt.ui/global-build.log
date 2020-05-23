@@ -1,0 +1,25 @@
+17:48:04 **** Incremental Build of configuration Debug for project masb-final-project ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/components/dac.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F401xE -DDEBUG -c -I../Drivers/CMSIS/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Core/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/components/dac.d" -MT"Core/Src/components/dac.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/components/dac.o"
+In file included from ../Core/Src/components/dac.c:8:0:
+../Core/Inc/components/dac.h:13:1: warning: parameter names (without types) in function declaration
+ void DAV_VALUES(Vcell);
+ ^~~~
+../Core/Src/components/dac.c: In function 'DAC_VALUES':
+../Core/Src/components/dac.c:15:6: warning: type of 'Vcell' defaults to 'int' [-Wimplicit-int]
+ void DAC_VALUES(Vcell){
+      ^~~~~~~~~~
+arm-none-eabi-gcc -o "masb-final-project.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\user\Desktop\microcontroladors\mab-pot-s-la_resistencia\masb-final-project\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="masb-final-project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: masb-final-project.elf
+ 
+arm-none-eabi-objdump -h -S  masb-final-project.elf  > "masb-final-project.list"
+arm-none-eabi-objcopy  -O binary  masb-final-project.elf  "masb-final-project.bin"
+arm-none-eabi-size   masb-final-project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  10512	     20	   1788	  12320	   3020	masb-final-project.elf
+Finished building: default.size.stdout
+ 
+Finished building: masb-final-project.bin
+ 
+Finished building: masb-final-project.list
+ 
