@@ -10,6 +10,10 @@
 
 #include "stm32f4xx_hal.h"
 
+extern I2C_HandleTypeDef hi2c1;
+
+uint8_t Data_dac[2];
+
 void Write_DAC(double Vdac);
 
 #endif /* INC_COMPONENTS_DAC_H_ */

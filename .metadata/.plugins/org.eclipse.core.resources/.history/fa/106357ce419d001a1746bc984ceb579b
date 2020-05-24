@@ -1,0 +1,22 @@
+/*
+ * dac.c
+ *
+ *  Created on: 23 may. 2020
+ *      Author: user
+ */
+
+#include "components/dac.h"
+// falta include dels arxius on ho utilitzarem (crono i volt.)
+
+void Write_DAC(double Vdac){
+
+	// Vcell_dac is a uint8_t so we must send the double Vcell in two bytes
+	Data_dac[0]= (Vdac >> 8); //little endian, important digits at the back
+	Data_dac[1]=(int)Vdac; // sending the rest of the digits
+
+	// Sending the data to the DAC with address 0xC0 (write)
+	HAL_I2C_Master_Transmit(&hi2c1, 0xC0, Data_dac, 2, 10);
+
+}
+
+void

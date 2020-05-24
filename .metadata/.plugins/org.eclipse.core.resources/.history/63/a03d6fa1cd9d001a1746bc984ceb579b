@@ -6,6 +6,7 @@
  */
 
 #include "components/dac.h"
+// falta include dels arxius on ho utilitzarem (crono i volt.)
 
 extern I2C_HandleTypeDef hi2c1;
 
@@ -22,7 +23,7 @@ void Write_DAC(double Vcell){
 
 	// The DAC used has a 12-Bit IC resultion (0-4096) and the output voltage is given by:
 	// Output voltage = (Reference voltage / resolution)*Digital value
-	Output_V=(Reference_voltage/Resolution)*Vdac;
+	Output_V=(Reference_voltage/resolution)*Vdac;
 
 	// Vcell_dac is a uint8_t so we must send the double Vcell in two bytes
 	Data_dac[0]= (Output_V>>8); // little endian, important digits at the back

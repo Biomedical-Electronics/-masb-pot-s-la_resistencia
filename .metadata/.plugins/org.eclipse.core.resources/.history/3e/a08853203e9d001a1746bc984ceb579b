@@ -10,6 +10,6 @@
 
 #include "stm32f4xx_hal.h"
 
-void Write_DAC(double Vdac);
+void DAV_VALUES(Vcell);
 
 #endif /* INC_COMPONENTS_DAC_H_ */

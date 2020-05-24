@@ -6,6 +6,7 @@
  */
 
 #include "components/dac.h"
+// falta include dels arxius on ho utilitzarem (crono i volt.)
 
 extern I2C_HandleTypeDef hi2c1;
 

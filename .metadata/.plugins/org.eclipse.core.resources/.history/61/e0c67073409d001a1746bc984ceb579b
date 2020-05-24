@@ -8,8 +8,10 @@
 #ifndef INC_COMPONENTS_DAC_H_
 #define INC_COMPONENTS_DAC_H_
 
-#include "stm32f4xx_hal.h"
+//#include "stm32f4xx_hal.h"
 
-void Write_DAC(double Vdac);
+uint8_t Vcell_dac[2];
+
+void Write_DAC(double Vcell);
 
 #endif /* INC_COMPONENTS_DAC_H_ */
