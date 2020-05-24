@@ -1,0 +1,18 @@
+!SESSION 2020-05-24 17:13:51.930 -----------------------------------------------
+eclipse.buildId=Version 1.3.0
+java.version=1.8.0_242
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-05-24 17:16:12.239
+!MESSAGE Log4j initialized with config file C:\Users\Vidalbana\Desktop\Microcontroladors\mab-pot-s-la_resistencia\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-05-24 17:16:30.367
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-05-24 17:16:31.319
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-05-24 17:18:23.504
+!MESSAGE Indexed 'masb-final-project' (20 sources, 56 headers) in 9.22 sec: 4,992 declarations; 11,387 references; 3 unresolved inclusions; 40 syntax errors; 230 unresolved names (1.4%)
