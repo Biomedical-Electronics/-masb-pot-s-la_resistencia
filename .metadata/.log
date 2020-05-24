@@ -16,3 +16,61 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2020-05-24 17:18:23.504
 !MESSAGE Indexed 'masb-final-project' (20 sources, 56 headers) in 9.22 sec: 4,992 declarations; 11,387 references; 3 unresolved inclusions; 40 syntax errors; 230 unresolved names (1.4%)
+!SESSION 2020-05-24 18:18:19.181 -----------------------------------------------
+eclipse.buildId=Version 1.3.0
+java.version=1.8.0_242
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-05-24 18:18:27.518
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-05-24 18:18:36.407
+!MESSAGE Log4j initialized with config file C:\Users\Vidalbana\Desktop\Microcontroladors\mab-pot-s-la_resistencia\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-05-24 18:19:04.382
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 4 0 2020-05-24 18:19:04.975
+!MESSAGE Failed to open C/C++ index file C:\Users\Vidalbana\Desktop\Microcontroladors\mab-pot-s-la_resistencia\.metadata\.plugins\org.eclipse.cdt.core\masb-final-project.1590333484800.pdom - rebuilding the index
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: masb-final-project.1590333484800.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:518)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:140)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:470)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:451)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:426)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:67)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:62)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:391)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:592)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2020-05-24 18:19:04.975
+!MESSAGE Corrupted database: masb-final-project.1590333484800.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2020-05-24 18:19:05.027
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: masb-final-project.1590333484800.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:518)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:140)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:470)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:451)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:426)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:67)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:62)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:399)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:592)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2020-05-24 18:19:05.027
+!MESSAGE Corrupted database: masb-final-project.1590333484800.pdom
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-05-24 18:19:05.659
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
