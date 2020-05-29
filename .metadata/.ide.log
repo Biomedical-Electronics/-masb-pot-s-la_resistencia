@@ -321,3 +321,10 @@
 2020-05-24 18:20:35,396 [INFO] ProjectBuilder:2894 - Time for Generating toolchain IDE Files: 8261mS.
 2020-05-24 18:20:35,397 [INFO] ProjectBuilder:1878 - Time for Copy CMSIS : 0mS.
 2020-05-24 18:20:35,402 [INFO] ProjectBuilder:1878 - Time for Copy CMSIS : 1mS.
+2020-05-29 13:51:15,239 [INFO] Activator:176 - 
+
+
+2020-05-29 13:51:15,442 [INFO] Activator:177 - !SESSION log4j initialized
+2020-05-29 13:51:49,746 [ERROR] ApiDbMcu:1418 - Can't use Application install path:
+2020-05-29 13:51:52,074 [WARN] RulesReader:54 - Compatibility file://mcu/compatibility.xml not found
+2020-05-29 14:12:07,001 [INFO] LogOutputStream:76 - [STDOUT_REDIRECT] NM parsing issue: line doesn't match pattern: 0000adbc r 
