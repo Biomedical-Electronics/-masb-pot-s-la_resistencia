@@ -30,7 +30,7 @@ void CA_start(void){ // iniciamos la cronoamperometria
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2) { // callback del timer, hacemos las medidas
 
-	Measures=ca.Configuration.measurementTime/(caConfiguration.samplingPeriodMs*(10**(-3))); // calculamos el total de medidas que corresponden al sampling period
+	Measures=ca.Configuration.measurementTime/(caConfiguration.samplingPeriodMs*10e(-3)); // calculamos el total de medidas que corresponden al sampling period
 
 	Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 
@@ -38,8 +38,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2) { // callback del t
 	// mandamos los datos que el host pide
 	data.point=Measure_number; // el numero de medida
 	data.timeMs=Measure_number*caConfiguration.samplingPeriodMs; // el tiempo transcurrido
-	data.voltage=ADC_v; // canviar struct ADC // el voltaje
-	data.current=ADC_i; // y la corriente
+	data.voltage=ADC_values.Vcell; // canviar struct ADC // el voltaje
+	data.current=ADC_values.Icell; // y la corriente
 
 	MASB_COMM_S_sendData(data); // mandamos los valores
 
