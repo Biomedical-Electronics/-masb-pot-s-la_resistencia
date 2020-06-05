@@ -327,3 +327,11 @@
 2020-06-01 20:06:44,790 [INFO] Activator:177 - !SESSION log4j initialized
 2020-06-01 20:06:57,568 [ERROR] ApiDbMcu:1418 - Can't use Application install path:
 2020-06-01 20:06:59,842 [WARN] RulesReader:54 - Compatibility file://mcu/compatibility.xml not found
+2020-06-05 16:59:24,326 [INFO] Activator:176 - 
+
+
+2020-06-05 16:59:24,357 [INFO] Activator:177 - !SESSION log4j initialized
+2020-06-05 16:59:45,169 [ERROR] ApiDbMcu:1418 - Can't use Application install path:
+2020-06-05 16:59:47,731 [WARN] RulesReader:54 - Compatibility file://mcu/compatibility.xml not found
+2020-06-05 17:00:11,718 [INFO] RetryExec:97 - I/O exception (org.apache.http.NoHttpResponseException) caught when processing request to {s}->https://download.eclipse.org:443: The target server failed to respond
+2020-06-05 17:00:11,721 [INFO] RetryExec:113 - Retrying request to {s}->https://download.eclipse.org:443
