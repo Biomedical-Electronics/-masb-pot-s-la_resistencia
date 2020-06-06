@@ -9,9 +9,8 @@
 
 #include "components/chronoamperometry.h"
 #include "components/dac.h"
-#include "components/timers.h"
+#include "components/timer.h"
 #include "components/adc.h"
-#include "components/masb_comm_s.h"
 
 extern struct CA_Configuration_S caConfiguration;
 extern struct Data_S data;
@@ -49,7 +48,6 @@ void CA_start(void){ // iniciamos la cronoamperometria
 			HAL_TIM_Base_Stop_IT(&htim2); // paramos el timer
 		}
 
-	}
 }
 
 

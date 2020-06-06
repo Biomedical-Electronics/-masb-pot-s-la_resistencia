@@ -9,9 +9,8 @@
 
 #include "components/chronoamperometry.h"
 #include "components/dac.h"
-#include "components/timers.h"
+#include "components/timer.h"
 #include "components/adc.h"
-#include "components/masb_comm_s.h"
 
 extern struct CA_Configuration_S caConfiguration;
 extern struct Data_S data;
@@ -33,23 +32,21 @@ void CA_start(void){ // iniciamos la cronoamperometria
 
 	}
 
-	while(Measure_number<Measures){
-		Measure_number++; // cada vez que hacemos una medida incrementamos el indice
+	Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 
-		// mandamos los datos que el host pide
-		data.point=Measure_number; // el numero de medida
-		data.timeMs=Measure_number*caConfiguration.samplingPeriodMs; // el tiempo transcurrido
-		data.voltage=ADC_v(); // canviar struct ADC // el voltaje
-		data.current=ADC_i(); // y la corriente
+	// mandamos los datos que el host pide
+	data.point=Measure_number; // el numero de medida
+	data.timeMs=Measure_number*caConfiguration.samplingPeriodMs; // el tiempo transcurrido
+	data.voltage=ADC_v(); // canviar struct ADC // el voltaje
+	data.current=ADC_i(); // y la corriente
 
-		MASB_COMM_S_sendData(data); // mandamos los valores
+	MASB_COMM_S_sendData(data); // mandamos los valores
 
-		if (Measure_number==Measures){ // si hemos terminado el ciclo (el numero de medidas es el correspondiente al sampling period
-			HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_RESET); // encendemos el relé
-			HAL_TIM_Base_Stop_IT(&htim2); // paramos el timer
-		}
-
+	if (Measure_number==Measures){ // si hemos terminado el ciclo (el numero de medidas es el correspondiente al sampling period
+		HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_RESET); // encendemos el relé
+		HAL_TIM_Base_Stop_IT(&htim2); // paramos el timer
 	}
+
 }
 
 
