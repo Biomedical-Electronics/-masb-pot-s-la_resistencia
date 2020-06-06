@@ -12,7 +12,7 @@ extern	ADC_HandleTypeDef	hadc1;
 uint32_t	Vref=0;
 uint32_t	Vadc=0;
 
-const float Rtia=10000;
+const float Rtia=10;
 float	Icell=0,
 		Vcell=0;
 
