@@ -6,6 +6,11 @@
  */
 
 #include "components/stm32main.h"
+
+
+void setup(void) {
+
+=======
 #include "components/pmu.h"
 #include "components/masb_comm_s.h"
 #include "components/chronoamperometry.h"
@@ -15,10 +20,13 @@ void setup(void) {
 
 	MASB_COMM_S_waitForMessage(); // esperamos un mensaje
 	PMU_enable(); // encendemos el pmu
+
 }
 
 void loop(void){
 
+
+=======
 	if (MASB_COMM_S_dataReceived()) { // si recibimos un mensaje
 
 		switch (MASB_COMM_S_command()){ // creamos una estructura para configurar el tipo de comando
@@ -39,4 +47,5 @@ void loop(void){
 		}
 
 	}
+
 }
