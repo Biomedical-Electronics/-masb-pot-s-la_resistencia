@@ -8,7 +8,9 @@
 #ifndef INC_COMPONENTS_TIMERS_H_
 #define INC_COMPONENTS_TIMERS_H_
 
-void Sampling_Period_CA(void);
-void Sampling_Period_CV(void);
+void Sampling_Period(void);
+
+
+_Bool wait;
 
 #endif /* INC_COMPONENTS_TIMERS_H_ */

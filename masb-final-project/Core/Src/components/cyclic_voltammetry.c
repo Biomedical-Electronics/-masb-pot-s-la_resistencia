@@ -8,18 +8,16 @@
   */
 
 
-#include "components/cyclic_voltammetry.h"
-=======
 
-#include "components/cyclic_voltammetry.h"
-=======
+
 #include "components/cyclic_voltammetry.h"
 #include "components/dac.h"
 #include "components/adc.h"
 #include "components/timers.h"
 #include "components/masb_comm_s.h"
+#include "main.h"
 
-extern struct	CV_Configuration_S	cvConfiguration;
+struct	CV_Configuration_S	cvConfiguration;
 extern struct	Data_S				data;
 extern TIM_HandleTypeDef	htim3;
 
@@ -28,18 +26,23 @@ uint8_t	number=0;
 uint8_t Measure_number=0;
 _Bool	increase;
 
-void CV_start(void){ // iniciamos la voltametria ciclica
 
-	Write_DAC(cvConfiguration.eBegin); // mandamos al DAC el valor de Vcell (eBegin del usuario)
+void CV_start(struct CV_Configuration_S cvConfiguration){ // iniciamos la voltametria ciclica
+
+	double Vcell=1.65-cvConfiguration.eBegin/2;
+	Write_DAC(Vcell);// mandamos al DAC el valor de Vcell (eBegin del usuario)
 	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_SET); // cerramos el relé
 	// cuando haya pasado el periodo entre muestras
-	cycles=cvConfiguration.cycles;
+
+	uint8_t cycles=cvConfiguration.cycles;
+
+	vObjetivo = cvConfiguration.eVertex1; // fijamos la tension objetivo
+
+	wait=FALSE;
 
 	while (number<cycles){
 
-		wait=FALSE;
-		vObjetivo = cvConfiguration.eVertex1; // fijamos la tension objetivo
-		Sampling_Period_CV(); // iniciamos el timer
+		Sampling_Period(); // iniciamos el timer
 
 		while (wait==FALSE){
 
@@ -51,18 +54,18 @@ void CV_start(void){ // iniciamos la voltametria ciclica
 		// mandamos los datos que el host pide
 		data.point=Measure_number; // el numero de medida
 		data.timeMs=Measure_number*cvConfiguration.eStep/cvConfiguration.scanRate; // el tiempo transcurrido
-		data.voltage=ADC_v(); // canviar struct ADC // el voltaje
-		data.current=ADC_i(); // y la corriente
+		data.voltage=(1.65-ADC_v())*2; // canviar struct ADC // el voltaje
+		data.current=((ADC_i()-1.65)*2)/10000; // y la corriente
 
 		MASB_COMM_S_sendData(data); // mandamos los valores
 
 
-		Vcell=ADC_v(); // leemos la tension de la celda
+		Vcell=data.voltage; // leemos la tension de la celda
 
 		if (vObjetivo==cvConfiguration.eVertex1){
 			increase=vObjetivo>cvConfiguration.eBegin;
 			if (increase) {
-				while(Vcell < vObjectivo) {
+				while(Vcell < vObjetivo) {
 					Vcell=Vcell+cvConfiguration.eStep; // sumamos eStep
 					if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
 						vObjetivo=cvConfiguration.eVertex2; // cambiamos la tension objetivo
@@ -81,7 +84,7 @@ void CV_start(void){ // iniciamos la voltametria ciclica
 		if (vObjetivo==cvConfiguration.eVertex2){
 			increase=vObjetivo>cvConfiguration.eVertex1;
 			if (increase) {
-			    while(Vcell < vObjectivo) {
+			    while(Vcell < vObjetivo) {
 			    	Vcell=Vcell+cvConfiguration.eStep; // sumamos eStep
 			    	if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
 			    	vObjetivo=cvConfiguration.eBegin; // cambiamos la tension objetivo
@@ -100,7 +103,7 @@ void CV_start(void){ // iniciamos la voltametria ciclica
 		if (vObjetivo==cvConfiguration.eBegin){
 			increase=vObjetivo>cvConfiguration.eVertex2;
 			if (increase) {
-				while(Vcell < vObjectivo) {
+				while(Vcell < vObjetivo) {
 					Vcell=Vcell+cvConfiguration.eStep; // sumamos eStep
 					if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
 						 // que se acabe o vuelva a empezar
@@ -117,12 +120,5 @@ void CV_start(void){ // iniciamos la voltametria ciclica
 	}
 		number++;
 
+	}
 }
-}
-
-
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3) {
-	wait=TRUE;
-}
-
-

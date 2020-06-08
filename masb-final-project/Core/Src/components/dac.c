@@ -18,11 +18,9 @@ uint16_t Output_V;
 
 void Write_DAC(double Vcell){
 
-	Vdac = 1.65-(Vcell/2);
-
 	// The DAC used has a 12-Bit IC resultion (0-4096) and the output voltage is given by:
 	// Output voltage = (Reference voltage / resolution)*Digital value
-	Output_V=(Reference_voltage/Resolution)*Vdac;
+	Output_V=(Reference_voltage/Resolution)*Vcell;
 
 	// Vcell_dac is a uint8_t so we must send the double Vcell in two bytes
 	Data_dac[0]= (Output_V>>8); // little endian, important digits at the back

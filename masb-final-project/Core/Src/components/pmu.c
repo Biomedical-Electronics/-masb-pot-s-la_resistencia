@@ -5,6 +5,9 @@
  *      Author: Vidalbana
  */
 
+#include "components/pmu.h"
+#include "main.h"
+
 void PMU_enable(void){
 	HAL_GPIO_WritePin(EN_GPIO_Port, EN_Pin, GPIO_PIN_SET); // habilitamos PMU
 }

@@ -10,7 +10,7 @@
 
 #include "stm32f4xx_hal.h"
 
-void ADC_v(void);
-void ADC_i(void);
+uint32_t ADC_v(void);
+uint32_t ADC_i(void);
 
 #endif /* INC_COMPONENTS_ADC_H_ */

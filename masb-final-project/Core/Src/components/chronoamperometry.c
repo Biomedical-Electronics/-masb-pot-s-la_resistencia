@@ -9,31 +9,29 @@
 
 
 #include "components/chronoamperometry.h"
-=======
-
-#include "components/chronoamperometry.h"
-=======
-#include "components/chronoamperometry.h"
 #include "components/dac.h"
 #include "components/timers.h"
 #include "components/adc.h"
 #include "components/masb_comm_s.h"
+#include "main.h"
 
-extern struct CA_Configuration_S caConfiguration;
+struct CA_Configuration_S caConfiguration;
+extern TIM_HandleTypeDef htim2;
 extern struct Data_S data;
 
-void CA_start(void){ // iniciamos la cronoamperometria
+
+void CA_start(struct CA_Configuration_S caConfiguration){ // iniciamos la cronoamperometria
 
 	Write_DAC(caConfiguration.eDC); // mandamos al DAC el valor de Vcell (eDC del usuario)
 
 	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_SET); /// cerramos el relé
 
-	Sampling_Period_CA(); // iniciamos el timer
+	Sampling_Period(); // iniciamos el timer
 
-	Measure_number=0; // creamos un indice para poder calcular el numero de medidas que vamos haciendo
+	uint8_t Measure_number=0; // creamos un indice para poder calcular el numero de medidas que vamos haciendo
 						// lo usaremos de referencia para saber el tiempo transcurrido
 
-	Measures=ca.Configuration.measurementTime/(caConfiguration.samplingPeriodMs*(10**(-3))); // calculamos el total de medidas que corresponden al sampling period
+	Measures=((caConfiguration.measurementTime)*1000/(caConfiguration.samplingPeriodMs)); // calculamos el total de medidas que corresponden al sampling period
 
 	while(wait==FALSE){
 
@@ -45,8 +43,8 @@ void CA_start(void){ // iniciamos la cronoamperometria
 		// mandamos los datos que el host pide
 		data.point=Measure_number; // el numero de medida
 		data.timeMs=Measure_number*caConfiguration.samplingPeriodMs; // el tiempo transcurrido
-		data.voltage=ADC_v(); // canviar struct ADC // el voltaje
-		data.current=ADC_i(); // y la corriente
+		data.voltage=(1.65-ADC_v())*2; // canviar struct ADC // el voltaje
+		data.current=((ADC_i()-1.65)*2)/10000; // y la corriente
 
 		MASB_COMM_S_sendData(data); // mandamos los valores
 
@@ -61,7 +59,7 @@ void CA_start(void){ // iniciamos la cronoamperometria
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2) { // callback del timer, hacemos las medidas
 
-	wait=TRUE;
+	wait = TRUE;
 }
 
 

@@ -63,11 +63,11 @@
 /* #define HAL_SPI_MODULE_ENABLED   */
 
 /* #define HAL_TIM_MODULE_ENABLED   */
-=======
+
 
 /* #define HAL_TIM_MODULE_ENABLED   */
-=======
-#define HAL_TIM_MODULE_ENABLED
+
+ #define HAL_TIM_MODULE_ENABLED
 
 
 #define HAL_UART_MODULE_ENABLED

@@ -21,8 +21,9 @@ struct CA_Configuration_S {
 
 };
 
+uint32_t Measures;
 
-void CA_start(void);
+void CA_start(struct CA_Configuration_S caConfiguration);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2);
 
 

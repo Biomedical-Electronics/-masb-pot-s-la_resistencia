@@ -13,6 +13,10 @@
 
 #include "stm32f4xx_hal.h"
 
+uint8_t cycles;
+double vObjetivo;
+double Vcell;
+
 struct CV_Configuration_S {
 
 	double eBegin;
@@ -25,7 +29,7 @@ struct CV_Configuration_S {
 };
 
 
-void CV_start(void);
+void CV_start(struct CV_Configuration_S cvConfiguration);
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3);
 
 

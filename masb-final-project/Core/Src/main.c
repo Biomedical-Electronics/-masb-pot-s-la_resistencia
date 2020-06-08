@@ -64,9 +64,7 @@ static void MX_ADC1_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_I2C1_Init(void);
 
-=======
 
-=======
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
 
@@ -112,9 +110,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C1_Init();
 
-=======
 
-=======
   MX_TIM2_Init();
   MX_TIM3_Init();
 
@@ -200,7 +196,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV4;
   hadc1.Init.Resolution = ADC_RESOLUTION_12B;
 
-=======
+
 
 
   hadc1.Init.ScanConvMode = DISABLE;
@@ -211,8 +207,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
 
-=======
-=======
+
   hadc1.Init.ScanConvMode = ENABLE;
   hadc1.Init.ContinuousConvMode = DISABLE;
   hadc1.Init.DiscontinuousConvMode = ENABLE;
@@ -239,9 +234,7 @@ static void MX_ADC1_Init(void)
     Error_Handler();
   }
 
-=======
 
-=======
   /** Configure for the selected ADC regular channel its corresponding rank in the sequencer and its sample time. 
   */
   sConfig.Channel = ADC_CHANNEL_1;
