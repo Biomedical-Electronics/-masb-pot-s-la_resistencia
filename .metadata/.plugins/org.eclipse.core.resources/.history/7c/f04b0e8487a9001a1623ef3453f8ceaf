@@ -1,0 +1,38 @@
+/*
+ * stm32main.c
+ *
+ *  Created on: May 19, 2020
+ *      Author: berta
+ */
+
+#include "components/stm32main.h"
+#include "components/pmu.h"
+#include "components/masb_comm_s.h"
+#include "components/chronoamperometry.h"
+#include "components/cyclic_voltammetry.h"
+
+void setup(void) {
+
+	MASB_COMM_S_waitForMessage()
+	PMU_enable()
+}
+
+void loop(void){
+
+	if (MASB_COMM_S_dataReceived()) {
+
+		switch (MASB_COMM_S_command(){
+
+			case START_CV_MEAS:
+				cvConfiguration = MASB_COMM_S_getCvConfiguration();
+				CV_start();
+
+			case START_CA_MEAS:
+				caConfiguration = MASB_COMM_S_getCaConfiguration();
+				CA_start;
+
+			default:
+				break;
+		}
+	}
+}
