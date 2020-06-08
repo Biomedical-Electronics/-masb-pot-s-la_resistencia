@@ -21,4 +21,10 @@ struct CA_Configuration_S {
 
 };
 
+
+=======
+void CA_start(void);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim2);
+
+
 #endif /* INC_COMPONENTS_CHRONOAMPEROMETRY_H_ */
