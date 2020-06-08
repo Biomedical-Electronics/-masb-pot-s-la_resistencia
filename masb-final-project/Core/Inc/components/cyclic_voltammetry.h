@@ -24,4 +24,7 @@ struct CV_Configuration_S {
 
 };
 
+void CV_start(void);
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3);
+
 #endif /* INC_COMPONENTS_CYCLIC_VOLTAMMETRY_H_ */
