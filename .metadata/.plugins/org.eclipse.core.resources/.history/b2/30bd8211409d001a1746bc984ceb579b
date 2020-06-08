@@ -1,0 +1,24 @@
+/*
+ * dac.c
+ *
+ *  Created on: 23 may. 2020
+ *      Author: user
+ */
+
+#include "components/dac.h"
+
+extern I2C_HandleTypeDef hi2c1;
+
+//uint32_t Vcell;
+uint8_t Vcell_dac[2];
+
+void Write_DAC(double Vcell){
+
+	// Vcell_dac is a uint8_t so we must send the double Vcell in two bytes
+	Vcell_dac[0]= ((int)Vcell >> 8); // little endian, important digits at the back
+	Vcell_dac[1]=(int)Vcell; // sending the rest of the digits
+
+	// Sending the data to the DAC with address 0xC0 (write)
+	HAL_I2C_Master_Transmit(&hi2c1, 0xC0, Vcell_dac, 2, 10);
+
+}

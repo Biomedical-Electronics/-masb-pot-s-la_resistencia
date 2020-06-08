@@ -10,6 +10,9 @@
 
 #include "components/cyclic_voltammetry.h"
 =======
+
+#include "components/cyclic_voltammetry.h"
+=======
 #include "components/cyclic_voltammetry.h"
 #include "components/dac.h"
 #include "components/adc.h"
@@ -121,4 +124,5 @@ void CV_start(void){ // iniciamos la voltametria ciclica
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim3) {
 	wait=TRUE;
 }
+
 

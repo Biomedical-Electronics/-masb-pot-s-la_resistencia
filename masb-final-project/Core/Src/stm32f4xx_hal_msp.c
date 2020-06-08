@@ -210,6 +210,8 @@ void HAL_I2C_MspDeInit(I2C_HandleTypeDef* hi2c)
 /**
 
 =======
+
+=======
 * @brief TIM_Base MSP Initialization
 * This function configures the hardware resources used in this example
 * @param htim_base: TIM_Base handle pointer
@@ -276,6 +278,7 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
 }
 
 /**
+
 
 * @brief UART MSP Initialization
 * This function configures the hardware resources used in this example
