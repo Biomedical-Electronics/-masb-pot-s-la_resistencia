@@ -2,7 +2,7 @@
 
 Maria Guerrero y Mariona Ribera
 
-Contact: marionagerrlop@gmail.com, marina.r.d1998@gmail.com
+Contact: marionaguerrlop@gmail.com, mariona.r.d1998@gmail.com
 
 
 
