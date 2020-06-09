@@ -2,11 +2,11 @@
 
 Maria Guerrero y Mariona Ribera
 
+Contact: marionagerrlop@gmail.com, marina.r.d1998@gmail.com
+
 
 
 > El proyecto MASB-POT-S está diseñado para realizar medidas electroquímicas en una celda y analizar propiedades de los analitos. Es un proyecto realizado con un microcontrolador EVB de STM32 y usando la plataforma STM32cubeIDE. Este artículo contiene la definición del proyecto así como los resultados obtenidos y aclaraciones necesarias para entenderlo.
-
-
 
 
 
@@ -20,22 +20,21 @@ Maria Guerrero y Mariona Ribera
 
 - [Conclusiones](#CONCLUSIONES)
 
-  ​
 
 
 ### INTRODUCCION 
 
 _____
 
- Con este proyecto se pretende programar un potenciostato para la realización de cronoamperometrías y voltametrías cíclicas de una celda electroquímica. Para ello, se ha usado el programa STM32CubeIde para configurar el microcontrolador y programar las instrucciones necesarias para realizar las mediciones. 
+Con este proyecto se pretende programar un potenciostato para la realización de cronoamperometrías y voltametrías cíclicas de una celda electroquímica. Para ello, se ha usado el programa STM32CubeIde para configurar el microcontrolador y programar las instrucciones necesarias para realizar las mediciones. 
 
 El microcontrolador debe comunicarse con el potenciostato y el ordenador para recibir y enviar los valores de voltaje y corriente y posteriormente deben ser representados en una gráfica usando una aplicación que puede connectarse con la plataforma STM32CubeIde (viSens-S). De este modo, podemos ver los resultados de la voltimetría cíclica o la cronoamperometría.  
 
 Una **celda electroquímica** de tres electrodos contiene el electrodo de trabajo (WE) que aplica el potencial deseado a la celda, el electrodo de referencia (RE) que actua como referencia en la medición ya que tiene un potencial conocido para medir el potencial del WE y un último electrodo llamado electrodo auxiliar (AE) que se utiliza para equilibrar la reacción en el WE.
 
-El **potenciostato** permite controlar los tres electrodos de la celda electroquímica controlando la diferencia de potencial en uno de ellos, en dos o en los tres.  A continuación podemos ver el esquema de un potenciostato. que puede controlar la diferencia de potencial en uno, dos o más electrodos de trabajo, con ayuda de un electrodo de referencia y un electrodo auxiliar. Para más informacion sobre el funcionamiento de los potenciostatos se puede consultar el siguiente [enlace](https://quimica.laguia2000.com/conceptos-basicos/potenciostato).
+El **potenciostato** permite controlar los tres electrodos de la celda electroquímica controlando la diferencia de potencial en uno de ellos, en dos o en los tres.  A continuación podemos ver el esquema de un potenciostato que puede controlar la diferencia de potencial en uno, dos o más electrodos de trabajo, con ayuda de un electrodo de referencia y un electrodo auxiliar. Para más informacion sobre el funcionamiento de los potenciostatos se puede consultar el siguiente [enlace](https://quimica.laguia2000.com/conceptos-basicos/potenciostato).
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Assets/potenciostat.png)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/potenciostat.png)
 
  A pesar de que debido a las circunstancias vividas estos últimos meses con el Covid-19 no se ha podido realizar, el planteamiento era usar una muestra de ferricinuro de potasio a diferentes concentracions i un tampón de cloruro de potasio.
 
@@ -45,7 +44,7 @@ La **voltametría cíclica** se basa en hacer un barrido triangular de potencial
 
 La **cronoamperometría** consiste en aplicar una señal escalón en el potencial del WE y mida la corriente que pasa por la celda en función del tiempo. Nos permite cuantificar la concentración del analito a partir de su actividad. Es un proceso mucho más simple en el que únicamente se fija un potencial inicial inocuo y se amplía hasta que se produce la reacción. Para ampliar la información se puede consultar [aquí](https://es.scribd.com/document/264324581/CRONOAMPEROMETRIA).
 
-A nivel técnico, para ejecutar el trabajo se ha usado la infraestructura git. Git nos ha permitido trabajar paralelamente creando ramas específicas para cada funcionalidad `feature/funcionalidad` y controlando la configuración del proyecto desde la rama `develop`. Git nos ha permitido evitar errores de compilación a la hora de trabajar los distintos miembros a la vez. Cabe mencionar que en caso de modificar la configuración del proyecto posteriormente a la creación de una rama, se debe realizar un `git rebase` para que la configuración sea aplicada a la rama. Una vez finalizadas las funcionalidades, mediante las funciones de `merge` de GitHub se ha juntado todo el proyecto para poder ser evaluado y subido a la rama `master` en buen estado.
+A nivel técnico, para ejecutar el trabajo se ha usado la infraestructura git. Git nos ha ayudado a trabajar paralelamente creando ramas específicas para cada funcionalidad `feature/funcionalidad` y controlando la configuración del proyecto desde la rama `develop`. Git nos ha permitido evitar errores de compilación a la hora de trabajar los distintos miembros a la vez. Cabe mencionar que en caso de modificar la configuración del proyecto posteriormente a la creación de una rama, se debe realizar un `git rebase` para que la configuración sea aplicada a la rama. Una vez finalizadas las funcionalidades, mediante las funciones de `merge` de GitHub se ha juntado todo el proyecto para poder ser evaluado y subido a la rama `master` en buen estado.
 
 
 
@@ -55,13 +54,13 @@ _______
 
 La ejecución del proyecto se puede resumir en el siguiente diagrama de flujo:
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Assets/diagrama.png)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/diagrama.png)
 
 Las diferentes funcionalidades se han ido desarrollando en ramas individuales para ser luego unidas en el proyecto. El proyecto está desarrollado en STM32cubeIDE y por ello se han usado las funciones de la [librería HAL](https://www.st.com/resource/en/user_manual/dm00105879-description-of-stm32f4-hal-and-ll-drivers-stmicroelectronics.pdf).
 
 La configuración del microcontrolador se puede ver en la siguiente figura donde vemos todas las conexiones que son necesarias para relizar el proyecto.
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Assets/configuracio.PNG)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/configuracio.PNG)
 
 Los componentes principales del proyecto están descritos a continuación:
 
@@ -126,10 +125,9 @@ Como se ha comentado, debido a la situación en la que nos encontramos con la pa
 Al tener un potenciostato que nos fue proporcionado antes de encontrarnos en esta situación, lo hemos podido adaptar para hacer un divisor de tension y conectarlo a las entradas analógicas del microcontrolador como se ve en la imagen que encontramos a continuación:
 
 <p align="center">
+<a href="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/placa.JPG">
 
-<a href="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG">
-
-<img src="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG" width=500 />
+<img src="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/placa.JPG" width=200 />
 
 </a>
 
