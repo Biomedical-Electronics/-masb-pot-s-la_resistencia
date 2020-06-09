@@ -40,8 +40,6 @@ void CA_start(struct CA_Configuration_S caConfiguration){ // iniciamos la cronoa
 	while(Measure_number<Measures){
 		Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 
-		struct Data_S data;
-
 		// mandamos los datos que el host pide
 		data.point=Measure_number; // el numero de medida
 		data.timeMs=Measure_number*caConfiguration.samplingPeriodMs; // el tiempo transcurrido

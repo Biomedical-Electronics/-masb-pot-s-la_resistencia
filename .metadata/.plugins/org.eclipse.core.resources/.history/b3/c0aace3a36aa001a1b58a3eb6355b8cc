@@ -50,8 +50,6 @@ void CV_start(struct CV_Configuration_S cvConfiguration){ // iniciamos la voltam
 
 		Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 
-		struct	Data_S data;
-
 		// mandamos los datos que el host pide
 		data.point=Measure_number; // el numero de medida
 		data.timeMs=Measure_number*cvConfiguration.eStep/cvConfiguration.scanRate; // el tiempo transcurrido
