@@ -31,12 +31,10 @@ void loop(void){
 			case START_CV_MEAS: // si el host quiere hav¡cer una cv
 				// configuramos la cv con sus parametros
 				CV_start(MASB_COMM_S_getCvConfiguration()); // ejecutamos la cv
-				break;
 
 			case START_CA_MEAS: // si el host quiere hav¡cer una ca
 				// configuramos la ca con sus parametros
 				CA_start(MASB_COMM_S_getCaConfiguration()); // ejecutamos la ca
-				break;
 
 			case STOP_MEAS: // si se quiere parar
 				break; // paramos

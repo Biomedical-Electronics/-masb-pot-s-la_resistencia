@@ -46,7 +46,7 @@ void CA_start(struct CA_Configuration_S caConfiguration){ // iniciamos la cronoa
 
 	while(Measure_number<Measures){ // mientras no se hayan realizado todas las medidas
 
-		while (wait=TRUE){ // si ha pasado el periodo
+		while (wait){ // si ha pasado el periodo
 
 			Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 

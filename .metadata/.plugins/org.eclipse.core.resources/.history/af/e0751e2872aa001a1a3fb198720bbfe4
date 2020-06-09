@@ -1,4 +1,4 @@
- /**
+/**
   ******************************************************************************
   * @file		chronoamperometry.c
   * @brief		Gestión de la cronoamperometría.
@@ -25,28 +25,24 @@ uint32_t Measures;
 void CA_start(struct CA_Configuration_S caConfiguration){ // iniciamos la cronoamperometria
 
 	double Vcell=1.65-caConfiguration.eDC; // definimos el potencial de inicio que el usuario introduce
-
-	//Write_DAC(Vcell); // fijamos esta tensión con el DAC
+	Write_DAC(Vcell); // fijamos esta tensión con el DAC
 
 	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_SET); /// cerramos el relé
 
-	Sampling_Period(caConfiguration.samplingPeriodMs); // iniciamos el timer
+	Sampling_Period(); // iniciamos el timer
 
 	uint8_t Measure_number=0; // creamos un indice para poder calcular el numero de medidas que vamos haciendo
 						// lo usaremos de referencia para saber el tiempo transcurrido
 
 	Measures=((caConfiguration.measurementTime)*1000/(caConfiguration.samplingPeriodMs)); // calculamos el total de medidas que corresponden al sampling period
 
-	wait=FALSE;
-
 	while(wait==FALSE){ // si no se ha completado el periodo no hagas nada
 
 	}
 
-
 	while(Measure_number<Measures){ // mientras no se hayan realizado todas las medidas
 
-		while (wait=TRUE){ // si ha pasado el periodo
+		while (wait==TRUE){ // si ha pasado el periodo
 
 			Measure_number++; // cada vez que hacemos una medida incrementamos el indice
 

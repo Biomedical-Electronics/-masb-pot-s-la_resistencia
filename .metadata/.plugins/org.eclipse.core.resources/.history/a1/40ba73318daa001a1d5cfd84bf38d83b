@@ -41,12 +41,9 @@ void CV_start(struct CV_Configuration_S cvConfiguration){ // iniciamos la voltam
 
 	uint8_t	number=0;
 
-
 	while (number<cycles){ // mientras no se hayan completado todos los ciclos
 
-		Sampling_Period(cvConfiguration.eStep/cvConfiguration.scanRate); // iniciamos el timer
-
-		wait=FALSE;
+		Sampling_Period(); // iniciamos el timer
 
 		while (wait==FALSE){ // si el periodo no se ha completado no hacemos nada
 
