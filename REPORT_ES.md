@@ -8,20 +8,22 @@ Maria Guerrero y Mariona Ribera
 
 
 
+
+
 **Tabla de contenido**
 
 - [Introducción](#INTRODUCCION)
 
-- [Diagrama de flujo](#DIAGRAMA_DE_FLUJO)
+- [Diagrama de flujo](#DIAGRAMA-DE-FLUJO)
 
-- [Resultados](#RESULTADOS_OBTENIDOS)
+- [Resultados](#RESULTADOS-OBTENIDOS)
 
 - [Conclusiones](#CONCLUSIONES)
 
   ​
 
 
-**INTRODUCCION** 
+### INTRODUCCION 
 
 _____
 
@@ -47,7 +49,7 @@ A nivel técnico, para ejecutar el trabajo se ha usado la infraestructura git. G
 
 
 
-**DIAGRAMA DE FLUJO**
+### DIAGRAMA DE FLUJO
 
 _______
 
@@ -113,7 +115,7 @@ En la cronoamperometría fijamos la tensión de la celda que deseamos mediante e
 
  
 
-**RESULTADOS OBTENIDOS**
+### RESULTADOS OBTENIDOS
 
 _____
 
@@ -123,13 +125,15 @@ Como se ha comentado, debido a la situación en la que nos encontramos con la pa
 
 Al tener un potenciostato que nos fue proporcionado antes de encontrarnos en esta situación, lo hemos podido adaptar para hacer un divisor de tension y conectarlo a las entradas analógicas del microcontrolador como se ve en la imagen que encontramos a continuación:
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG = 100x20)
 
 
 
  El resultado final no es el esperado ya que nos e ha podido conectar con la aplicación viSense por causas que no hemos sabido resolver. El código compila sin errores pero parece que no envía datos a la aplicación.
 
-**CONCLUSIONES**
+
+
+### CONCLUSIONES
 
 _____________
 
