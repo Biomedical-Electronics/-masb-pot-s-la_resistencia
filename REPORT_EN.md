@@ -34,7 +34,7 @@ A three electrode **electrochemical cell** contains the working electrode (WE) t
 
 The **potentiostat** allows to control the three electrodes of the electrochemical cell by controlling the potential difference in one of them, in two or in all three. Below we can see the diagram of a potentiostat which can control the potential difference in one, two or more working electrodes, with the help of a reference electrode and an auxiliary electrode. For more information on the operation of the potentiostats, you can consult the following [link](https://quimica.laguia2000.com/conceptos-basicos/potenciostato).
 
-! [] (https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/potenciostat.png)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/potenciostat.png)
 
  Although due to the circumstances experienced in recent months with the Covid-19 it has not been possible, the approach was to use a sample of potassium ferricinide at different concentrations and a potassium chloride buffer.
 
@@ -54,13 +54,13 @@ _______
 
 The execution of the project can be summarized in the following flow chart:
 
-! [] (https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/diagrama.png)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/diagrama.png)
 
 The different functionalities have been developed in individual branches to be later united in the project. The project is developed in STM32cubeIDE and therefore the functions of the [HAL library](https://www.st.com/resource/en/user_manual/dm00105879-description-of-stm32f4-hal-and-ll -drivers-stmicroelectronics.pdf) have been used .
 
 The configuration of the microcontroller can be seen in the following figure where we see all the connections that are necessary to carry out the project.
 
-! [] (https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/configuracio.PNG)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Docs/assets/imgs/configuracio.PNG)
 
 The main components of the project are described below:
 
