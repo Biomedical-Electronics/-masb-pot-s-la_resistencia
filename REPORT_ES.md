@@ -125,9 +125,15 @@ Como se ha comentado, debido a la situación en la que nos encontramos con la pa
 
 Al tener un potenciostato que nos fue proporcionado antes de encontrarnos en esta situación, lo hemos podido adaptar para hacer un divisor de tension y conectarlo a las entradas analógicas del microcontrolador como se ve en la imagen que encontramos a continuación:
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG = 100x20)
+<p align="center">
 
+<a href="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG">
 
+<img src="https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG" width=500 />
+
+</a>
+
+</p>
 
  El resultado final no es el esperado ya que nos e ha podido conectar con la aplicación viSense por causas que no hemos sabido resolver. El código compila sin errores pero parece que no envía datos a la aplicación.
 
