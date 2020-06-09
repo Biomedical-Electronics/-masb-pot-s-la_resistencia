@@ -7,4 +7,125 @@
   ******************************************************************************
   */
 
+
+
+
 #include "components/cyclic_voltammetry.h"
+#include "components/dac.h"
+#include "components/adc.h"
+#include "components/timers.h"
+#include "components/masb_comm_s.h"
+#include "main.h"
+
+struct	CV_Configuration_S	cvConfiguration;
+extern TIM_HandleTypeDef	htim3;
+
+double vObjetivo=0;
+uint8_t Measure_number=0;
+_Bool	increase;
+uint8_t cycles;
+double Vcell;
+
+
+void CV_start(struct CV_Configuration_S cvConfiguration){ // iniciamos la voltametria ciclica
+
+	double Vcell=1.65-cvConfiguration.eBegin/2; // fijamos el potencial de inicio que el usuario pide
+
+	//Write_DAC(Vcell);// enviamos con el DAC esta potencial
+
+	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_SET); // cerramos el relé
+
+	uint8_t cycles=cvConfiguration.cycles; // definimos los ciclos que tendra la CV
+
+	vObjetivo = cvConfiguration.eVertex1; // fijamos la tension objetivo a eVertex1 (donde queremos llegar inicialmente)
+
+	uint8_t	number=0;
+
+
+	while (number<cycles){ // mientras no se hayan completado todos los ciclos
+
+		Sampling_Period(cvConfiguration.eStep/cvConfiguration.scanRate); // iniciamos el timer
+
+		wait=FALSE;
+
+		while (wait==FALSE){ // si el periodo no se ha completado no hacemos nada
+
+		}
+
+
+		while (wait==TRUE) { // si ya se ha completado el periodo...
+
+			Measure_number++; // cada vez que hacemos una medida incrementamos el indice
+
+			struct	Data_S data;
+
+			// mandamos los datos que el host pide
+			data.point=Measure_number; // el numero de medida
+			data.timeMs=Measure_number*cvConfiguration.eStep/cvConfiguration.scanRate; // el tiempo transcurrido
+			data.voltage=(1.65-ADC_v())*2; // el voltaje
+			data.current=((ADC_i()-1.65)*2)/10000; // y la corriente
+
+			MASB_COMM_S_sendData(data); // mandamos los valores al host
+
+			Vcell=data.voltage; // leemos la tension de la celda
+
+			if (vObjetivo==cvConfiguration.eVertex1){ // primer paso, queremos llegar a eVertex1
+				increase=vObjetivo>cvConfiguration.eBegin; // increse deifine que eBegin es mas pequeña que eVertex1
+				if (increase) { // si es verdad
+					while(Vcell < vObjetivo) { // mientras Vcell no llegue a vObjetivo
+						Vcell=Vcell+cvConfiguration.eStep; // vamos aumentando hasta llegar
+						if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
+							vObjetivo=cvConfiguration.eVertex2; // cambiamos la tension objetivo
+						}
+					}
+				} else { // si increase no es verdad, es decir, si la tension inicial es superior
+					while(Vcell>vObjetivo){
+						Vcell=Vcell-cvConfiguration.eStep; // restamos eStep
+						if(Vcell<=vObjetivo){ // si la tension en la celda es menor o igual al objetivo
+							vObjetivo=cvConfiguration.eVertex2; // cambiamos la tension objetivo
+						}
+					}
+				}
+			}
+
+			if (vObjetivo==cvConfiguration.eVertex2){ // segundo paso, queremos llegar a eVertex2
+				increase=vObjetivo>cvConfiguration.eVertex1; //ahora estamos en eVertex1 y queremos ir a eVertex2
+				if (increase) {
+					while(Vcell < vObjetivo) { // si es mas pequeña...
+						Vcell=Vcell+cvConfiguration.eStep; // sumamos eStep
+						if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
+							vObjetivo=cvConfiguration.eBegin; // cambiamos la tension objetivo
+						}
+					}
+				} else {
+					while(Vcell>vObjetivo){ // si es mayor...
+						Vcell=Vcell-cvConfiguration.eStep; // restamos eStep
+			    		if(Vcell<=vObjetivo){ // si la tension en la celda es menor o igual al objetivo
+			    			vObjetivo=cvConfiguration.eBegin; // cambiamos la tension objetivo
+			    		}
+					}
+				}
+			}
+
+			if (vObjetivo==cvConfiguration.eBegin){ // finalmente volvemos a eBegin
+				increase=vObjetivo>cvConfiguration.eVertex2; // estamos en eVertex2 y queremos llegar a eBegin
+				if (increase) {
+					while(Vcell < vObjetivo) { // si es menor...
+						Vcell=Vcell+cvConfiguration.eStep; // sumamos eStep
+						if(Vcell>=vObjetivo){ // si la tension en la celda es mayor o igual al objetivo
+							// que se acabe o vuelva a empezar
+						}
+					}
+				} else {
+					while(Vcell>vObjetivo){ // si es mayor...
+						Vcell=Vcell-cvConfiguration.eStep; // restamos eStep
+						if(Vcell<=vObjetivo){ // si la tension en la celda es menor o igual al objetivo
+							// que se acabe o vuelva a empezar
+						}
+					}
+				}
+			}
+			number++; // vamos sumando el numero de ciclos que vamos haciendo
+		}
+	}
+}
