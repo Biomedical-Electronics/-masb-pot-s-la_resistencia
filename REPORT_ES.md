@@ -12,9 +12,9 @@ Maria Guerrero y Mariona Ribera
 
 - [Introducción](#INTRODUCCION)
 
-- [Diagrama de flujo](#DIAGRAMA DE FLUJO)
+- [Diagrama de flujo](#DIAGRAMA_DE_FLUJO)
 
-- [Resultados](#RESULTADOS OBTENIDOS)
+- [Resultados](#RESULTADOS_OBTENIDOS)
 
 - [Conclusiones](#CONCLUSIONES)
 
@@ -123,11 +123,11 @@ Como se ha comentado, debido a la situación en la que nos encontramos con la pa
 
 Al tener un potenciostato que nos fue proporcionado antes de encontrarnos en esta situación, lo hemos podido adaptar para hacer un divisor de tension y conectarlo a las entradas analógicas del microcontrolador como se ve en la imagen que encontramos a continuación:
 
-![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/develop/Assets/potenciostat.png)
+![](https://github.com/Biomedical-Electronics/mab-pot-s-la_resistencia/blob/6c9f352b045cd09ce75f6aabebdd56c63449e97b/Assets/placa.JPG)
 
-**Posar foto dels grafics de visens i comentar**
 
- 
+
+ El resultado final no es el esperado ya que nos e ha podido conectar con la aplicación viSense por causas que no hemos sabido resolver. El código compila sin errores pero parece que no envía datos a la aplicación.
 
 **CONCLUSIONES**
 
